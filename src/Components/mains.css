@@ -1,0 +1,10 @@
+.main__content{
+    display:flex;
+    margin-top: 0;
+}
+.for__map{
+    flex: 0.8 !important;
+}
+.filterField{
+    width: 18px;
+}

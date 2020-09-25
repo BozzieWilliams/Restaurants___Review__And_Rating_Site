@@ -1,0 +1,11 @@
+.pop__up{
+    background-color: white;  
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 2px;
+    min-width:150px ;
+}
+.rating{
+    font-size: smaller;
+}
