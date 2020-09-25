@@ -15,7 +15,7 @@ export default function RestaurantList({ picture, name, address, reviews,rating 
         <div className="p-2">
           <h5>{name}</h5>
           <span>
-            <strong>Add:</strong> {address}
+            <strong>Address:</strong> {address}
           </span>        
             <div className="feedbacks">
               <span>
