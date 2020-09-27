@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Input } from 'reactstrap'
 import RestaurantList from './Sidebar';
 import Map from './Map'
 import FreeScrollBar from 'react-free-scrollbar';
 import './mains.css'
-
 
 export default function MainContainer() {
   const [mainState, setMainState] = useState({
@@ -11,7 +11,7 @@ export default function MainContainer() {
     data: [],
     restaurant: '',
     modals: false,
-  });  
+  });
   const saveRestuarant = (newRestuarant) => {
     setMainState(prev => ({
       data: [
@@ -21,8 +21,15 @@ export default function MainContainer() {
       modals: false
     }));
   };
+  const updateRating = (rating) => {
+    setMainState(() => ({
+      rating: rating.trim()
+    }));
+  };
+
+  
   useEffect(() => {
-    fetch("https://tripadvisor1.p.rapidapi.com/restaurants/list?restaurant_tagcategory_standalone=10591&restaurant_tagcategory=10591&min_rating=4&lang=en_US&currency=USD&restaurant_mealtype=seafood&limit=20&lunit=km&location_id=294210", {
+    fetch("https://tripadvisor1.p.rapidapi.com/restaurants/list?restaurant_tagcategory_standalone=10591&restaurant_tagcategory=10591&lang=en_US&currency=USD&Restaurant_Review=true&restaurant_mealtype=seafood&limit=30&lunit=km&location_id=294210", {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
@@ -35,26 +42,41 @@ export default function MainContainer() {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  });
 
   let curatedInfomation = [];
-  mainState.data.forEach(item => {
-    if (
-      item.rating === 1
-    )
+  // let homeland=mainState.data;
+  mainState.data.forEach(individualRestaurant => {
+    if (       
+        individualRestaurant.rating &&  individualRestaurant.rating.toLowerCase().indexOf(mainState.rating.toLowerCase()) === -1
+      )     
       return;
     curatedInfomation.push(
-      <RestaurantList
-        key={item.id}
-        name={item.name}
-        address={item.address}
-        picture={item.photo && item.photo.images.small.url}
-        reviews={item.reviews}
+      <RestaurantList key={individualRestaurant.id}
+        name={individualRestaurant.name}
+        address={individualRestaurant.address}
+        picture={individualRestaurant.photo && individualRestaurant.photo.images.small.url}
+        reviews={individualRestaurant.rating}
       />,
     )
   })
   return (
     <div>
+      <div className="header__section">
+        <div className="main__heading">
+          <h2>Restaurant Review Site</h2>
+        </div>
+        <div className="filter__field">
+          <span><Input
+            type="number"
+            name="rating"
+            placeholder="filter by rating"
+            value={mainState.rating}
+            onChange={(e) => updateRating(e.target.value)}
+          />
+          </span>
+        </div>
+      </div>
       <div className="main__content">
         <div className='for__map' >
           <Map
