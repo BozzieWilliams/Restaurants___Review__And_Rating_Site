@@ -48,7 +48,7 @@ export default function MainContainer() {
   // let homeland=mainState.data;
   mainState.data.forEach(individualRestaurant => {
     if (       
-        individualRestaurant.rating === -1
+        individualRestaurant.rating &&  individualRestaurant.rating.toLowerCase().indexOf(mainState.rating.toLowerCase()) === -1
       )     
       return;
     curatedInfomation.push(
