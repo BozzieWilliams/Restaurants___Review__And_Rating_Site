@@ -69,4 +69,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
-### [The link to the Deployed App](https://quizzical-brattain-a1a249.netlify.app/)
+### [The link to the Deployed App](https://distracted-hawking-0f1696.netlify.app/)
