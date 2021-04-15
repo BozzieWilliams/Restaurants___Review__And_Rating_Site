@@ -5,17 +5,16 @@ export default class SideBar extends React.Component {
     return (
       <div className="side__bar">
         <div className="retaurant__info">
+          
+      {this.props.picture && this.props.name && this.props.reviews && (
           <div >
-      {this.props.picture&&(
-    <img
+             <img
               className="restaurantView__Image"
               src={this.props.picture}
               alt="Restaurant__Icon"
-            />
-    )
-      }            
-          </div>
-          <div>
+            />    
+           </div>
+        <div>
             <h6 className="restaurant__OfficialName"><strong>{this.props.name}</strong></h6>
             <span>
               {this.props.address}
@@ -26,6 +25,8 @@ export default class SideBar extends React.Component {
               </span>
             </div>
           </div>
+        )
+        } 
         </div>
       </div>
     );
