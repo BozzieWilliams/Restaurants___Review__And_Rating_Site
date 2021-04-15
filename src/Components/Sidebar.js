@@ -6,11 +6,14 @@ export default class SideBar extends React.Component {
       <div className="side__bar">
         <div className="retaurant__info">
           <div >
-            <img
+      {this.props.picture&&(
+    <img
               className="restaurantView__Image"
               src={this.props.picture}
               alt="Restaurant__Icon"
             />
+    )
+      }            
           </div>
           <div>
             <h6 className="restaurant__OfficialName"><strong>{this.props.name}</strong></h6>
