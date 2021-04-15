@@ -69,4 +69,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 
-### [The link to the Deployed App](https://bozzie-restaurant-review.netlify.app)
+<!------### [The link to the Deployed App](https://bozzie-restaurant-review.netlify.app)-----!
